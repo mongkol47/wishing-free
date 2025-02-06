@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เขียนความปรารถนา</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #007BFF;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px; /* เพิ่ม Padding รอบขอบด้านใน */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>เขียนความปรารถนา</h1>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="wish">ความปรารถนา</label>
+            <input type="text" id="wish" placeholder="กรอกความปรารถนา...">
+        </div>
+        <div class="form-group">
+            <label for="name">ชื่อ - นามสกุล</label>
+            <input type="text" id="name" placeholder="กรอกชื่อ-นามสกุล...">
+        </div>
+        <div class="form-group">
+            <label for="birthdate">วันเกิด</label>
+            <input type="date" id="birthdate">
+        </div>
+        <button onclick="submitForm()">สวด</button>
+    </div>
+
+    <script>
+        function submitForm() {
+    const wish = document.getElementById('wish').value;
+    const name = document.getElementById('name').value;
+    const birthdate = document.getElementById('birthdate').value;
+
+    if (!wish || !name || !birthdate) {
+        alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+        return;
+    }
+
+    localStorage.setItem('wish', wish); // เก็บความปรารถนา
+    localStorage.setItem('name', name); // เก็บชื่อ
+    localStorage.setItem('birthdate', birthdate); // เก็บวันเกิด
+
+    window.location.href = 'step3.html'; // ย้ายไปยัง step3
+}
+
+        
+    </script>
+</body>
+</html>

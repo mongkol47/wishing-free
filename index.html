@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกหัวข้อ UpLuck</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #007BFF;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .sub-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px; /* เพิ่มช่องว่างระหว่างภาพในแต่ละแถวและคอลัมน์ */
+            row-gap: 40px; /* เพิ่มช่องว่างระหว่างแถว */
+            justify-items: center;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            position: relative;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.1);
+            background-color: #f0f8ff;
+        }
+
+        .grid-item img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .grid-item .tooltip {
+            position: absolute;
+            bottom: -25px;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .grid-item:hover .tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Title ใหญ่ -->
+    <h1>อยาก Up Luck ด้านไหนคะ?</h1>
+    
+    <!-- Sub-title -->
+    <div class="sub-title">เลือกด้านที่คุณต้องการ</div>
+    
+    <!-- Grid Icon -->
+    <div class="grid-container">
+        <div class="grid-item" onclick="selectOption('ความรัก')">
+            <img src="resource/heart-icon.png" alt="ความรัก">
+            <div class="tooltip">ความรัก</div>
+        </div>
+        <div class="grid-item" onclick="selectOption('การเงิน')">
+            <img src="resource/money-icon.png" alt="การเงิน">
+            <div class="tooltip">การเงิน</div>
+        </div>
+        <div class="grid-item" onclick="selectOption('ความสำเร็จ')">
+            <img src="resource/success-icon.png" alt="ความสำเร็จ">
+            <div class="tooltip">ความสำเร็จ</div>
+        </div>
+        <div class="grid-item" onclick="selectOption('สุขภาพ')">
+            <img src="resource/health-icon.png" alt="สุขภาพ">
+            <div class="tooltip">สุขภาพ</div>
+        </div>
+        <div class="grid-item" onclick="selectOption('โชคดี')">
+            <img src="resource/star-icon.png" alt="โชคดี">
+            <div class="tooltip">โชคดี</div>
+        </div>
+        <div class="grid-item" onclick="selectOption('ชีวิตยืนยาว')">
+            <img src="resource/infinity-icon.png" alt="ชีวิตยืนยาว">
+            <div class="tooltip">ชีวิตยืนยาว</div>
+        </div>
+    </div>
+
+    <script>
+        function selectOption(option) {
+            // Map หัวข้อภาษาไทยไปยังคีย์ภาษาอังกฤษ
+            const topicMap = {
+                "ความรัก": "love",
+                "การเงิน": "money",
+                "ความสำเร็จ": "success",
+                "สุขภาพ": "health",
+                "โชคดี": "luck",
+                "ชีวิตยืนยาว": "longlife"
+            };
+
+            // แปลงหัวข้อภาษาไทยเป็นคีย์ภาษาอังกฤษ
+            const topicKey = topicMap[option];
+
+            // ตรวจสอบว่าหัวข้อที่เลือกมีอยู่ใน topicMap หรือไม่
+            if (topicKey) {
+                localStorage.setItem('upluckTopic', topicKey); // บันทึกค่าใน localStorage
+                window.location.href = 'step2.html'; // ย้ายไปยัง step2
+            } else {
+                alert('หัวข้อที่เลือกไม่ถูกต้อง');
+            }
+        }
+    </script>
+</body>
+</html>

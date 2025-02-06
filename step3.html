@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกจำนวนรอบ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #007BFF;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .power-bar-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+            background-color: #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .power-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #4caf50;
+            transition: width 0.3s;
+        }
+
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 10%;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .options-container {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option {
+            width: 80%;
+            max-width: 400px;
+            padding: 15px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .option:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .start-button {
+            width: 80%;
+            max-width: 400px;
+            padding: 15px;
+            font-size: 20px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            margin-top: 30px;
+        }
+
+        .start-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>จะส่งพลังให้ความปรารถนา</h1>
+    <p id="wishText"><strong>"..."</strong></p>
+
+    <div class="power-bar-container">
+        <div class="power-bar" id="powerBar"></div>
+    </div>
+    <div class="labels">
+        <span>น้อย</span>
+        <span>มาก</span>
+    </div>
+
+    <div class="options-container">
+        <button class="option" onclick="selectRounds(1)">1 รอบ</button>
+        <button class="option" onclick="selectRounds(3)">3 รอบ</button>
+        <button class="option" onclick="selectRounds(7)">7 รอบ</button>
+        <button class="option" onclick="selectRounds(9)">9 รอบ</button>
+    </div>
+
+    <button class="start-button" onclick="startPraying()">เริ่มสวด</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wish = localStorage.getItem('wish') || "ความปรารถนา";
+            document.getElementById('wishText').innerText = `"${wish} เป็นจริง"`;
+        });
+
+        let selectedRounds = 0;
+
+        function selectRounds(rounds) {
+            const powerBar = document.getElementById('powerBar');
+            powerBar.style.width = (rounds / 9) * 100 + '%';
+            selectedRounds = rounds;
+        }
+
+        function startPraying() {
+            if (selectedRounds === 0) {
+                alert('กรุณาเลือกจำนวนรอบก่อนเริ่มสวด');
+                return;
+            }
+
+            localStorage.setItem('selectedRounds', selectedRounds);
+            window.location.href = 'step4.html';
+        }
+    </script>
+</body>
+</html>
