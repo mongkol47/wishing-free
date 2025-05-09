@@ -66,7 +66,7 @@
       line-height: 20px;
     }
 
-    #backButton {
+    #backButton, #startButton {
       margin-top: 20px;
       padding: 12px 20px;
       font-size: 16px;
@@ -79,7 +79,7 @@
       width: 100%;
     }
 
-    #backButton:hover {
+    #backButton:hover, #startButton:hover {
       background-color: #218838;
       transform: scale(1.05);
     }
@@ -96,6 +96,7 @@
       <div id="progressLabel">0%</div>
     </div>
 
+    <button id="startButton" style="display: none;">เริ่มสวด</button>
     <button id="backButton" onclick="goToHome()">กลับไปหน้าแรก</button>
   </div>
 
@@ -103,11 +104,11 @@
     const topic = localStorage.getItem('upluckTopic');
     const rounds = parseInt(localStorage.getItem('selectedRounds'));
 
+    // ถ้าไม่มีข้อมูลให้กลับไปหน้าแรก
     if (!topic || !rounds || isNaN(rounds)) {
-    alert("กรุณาเลือกหัวข้อและจำนวนรอบก่อน");
-    window.location.href = "index.html"; // หรือ redirect ไปหน้าเริ่มต้นของคุณ
-}
-
+      alert("กรุณาเลือกหัวข้อและจำนวนรอบก่อน");
+      window.location.href = "index.html";
+    }
 
     const chantFiles = {
       love: 'resource/love.mp3',
@@ -158,14 +159,28 @@
       progressLabel.innerText = `${Math.round(progress)}%`;
     });
 
+    document.getElementById('startButton').addEventListener('click', () => {
+      document.getElementById('startButton').style.display = 'none';
+      playChant();
+    });
+
     function goToHome() {
       window.location.href = "index.html";
     }
 
-    // เริ่มเล่นทันที
-    playChant();
+    // ตรวจว่ามือถือหรือไม่
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // มือถือต้องกดปุ่ม
+      document.getElementById('startButton').style.display = 'block';
+    } else {
+      // Desktop auto-play ได้
+      playChant();
+    }
   </script>
 </body>
 </html>
+
 
 
