@@ -1,144 +1,145 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เลือกจำนวนรอบ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            padding: 40px 20px;
-            text-align: center;
-        }
-    
-        h1 {
-            font-size: 32px;
-            color: #007BFF;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-    
-        .power-bar-container {
-            width: 80%;
-            max-width: 500px;
-            margin: 0 auto 15px auto;
-            background-color: #e0e0e0;
-            border-radius: 20px;
-            height: 20px;
-            overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-    
-        .power-bar {
-            height: 100%;
-            width: 0%;
-            background-color: #4caf50;
-            transition: width 0.4s ease;
-        }
-    
-        .labels {
-            width: 80%;
-            max-width: 500px;
-            margin: 5px auto 25px auto;
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #666;
-        }
-    
-        .options-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            width: 90%;
-            max-width: 500px;
-            margin: 0 auto 30px auto;
-        }
-    
-        .option {
-            padding: 15px;
-            font-size: 16px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-    
-        .option:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-    
-        .start-button {
-            padding: 15px 25px;
-            font-size: 18px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    
-        .start-button:hover {
-            background-color: #218838;
-            transform: scale(1.05);
-        }
-    </style>
-    
-    <h1>จะส่งพลังให้ความปรารถนาเป็นจริง</h1>
-    
-    <div class="power-bar-container">
-        <div class="power-bar" id="powerBar"></div>
-    </div>
-    <div class="labels">
-        <span>น้อย</span>
-        <span>มาก</span>
-    </div>
-    
-    
-    
-    
-    <div class="options-container">
-        <button class="option" onclick="selectRounds(1)">1 รอบ</button>
-        <button class="option" onclick="selectRounds(3)">3 รอบ</button>
-        <button class="option" onclick="selectRounds(7)">7 รอบ</button>
-        <button class="option" onclick="selectRounds(9)">9 รอบ</button>
-    </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เลือกจำนวนรอบ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      padding: 40px 20px;
+      text-align: center;
+      color: #FFD700;
+    }
 
-    <button class="start-button" onclick="startPraying()">เริ่มสวด</button>
+    h1 {
+      font-size: 32px;
+      color: #FFD700;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
 
+    .power-bar-container {
+      width: 80%;
+      max-width: 500px;
+      margin: 0 auto 15px auto;
+      background-color: #333;
+      border-radius: 20px;
+      height: 20px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(255, 215, 0, 0.3);
+    }
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // สมมุติหัวข้อจากชื่อไฟล์ เช่น love.html → ตั้งไว้เป็น love
-            const path = window.location.pathname;
-            const topicMatch = path.match(/\/?([^\/]+)\.html$/);
-            const topic = topicMatch ? topicMatch[1] : "success";
-            localStorage.setItem('upluckTopic', topic); // บันทึก topic ปัจจุบัน
-        });
-    
-        let selectedRounds = 0;
-    
-        function selectRounds(rounds) {
-            document.getElementById('powerBar').style.width = (rounds / 9) * 100 + '%';
-            selectedRounds = rounds;
-        }
-    
-        function startPraying() {
-            if (selectedRounds === 0) {
-                alert('กรุณาเลือกจำนวนรอบก่อนเริ่มสวด');
-                return;
-            }
-    
-            localStorage.setItem('selectedRounds', selectedRounds);
-            window.location.href = 'step4.html';
-        }
-    </script>
-    
+    .power-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #FFD700, #FFB700);
+      transition: width 0.4s ease;
+    }
+
+    .labels {
+      width: 80%;
+      max-width: 500px;
+      margin: 5px auto 25px auto;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .options-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      width: 90%;
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+    }
+
+    .option {
+      padding: 15px;
+      font-size: 16px;
+      background-color: #2a2a2a;
+      color: #FFD700;
+      border: 1px solid #FFD700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .option:hover {
+      background-color: #444;
+      transform: scale(1.05);
+    }
+
+    .start-button {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #FFD700;
+      color: #121212;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+    }
+
+    .start-button:hover {
+      background-color: #FFC700;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>จะส่งพลังให้ท่านประสบความสำเร็จ</h1>
+
+  <div class="power-bar-container">
+    <div class="power-bar" id="powerBar"></div>
+  </div>
+
+  <div class="labels">
+    <span>น้อย</span>
+    <span>มาก</span>
+  </div>
+
+  <div class="options-container">
+    <button class="option" onclick="selectRounds(1)">1 รอบ</button>
+    <button class="option" onclick="selectRounds(3)">3 รอบ</button>
+    <button class="option" onclick="selectRounds(7)">7 รอบ</button>
+    <button class="option" onclick="selectRounds(9)">9 รอบ</button>
+  </div>
+
+  <button class="start-button" onclick="startPraying()">เริ่มสวด</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // สมมุติหัวข้อจากชื่อไฟล์ เช่น love.html → ตั้งไว้เป็น love
+      const path = window.location.pathname;
+      const topicMatch = path.match(/\/?([^\/]+)\.html$/);
+      const topic = topicMatch ? topicMatch[1] : "success";
+      localStorage.setItem('upluckTopic', topic);
+    });
+
+    let selectedRounds = 0;
+
+    function selectRounds(rounds) {
+      document.getElementById('powerBar').style.width = (rounds / 9) * 100 + '%';
+      selectedRounds = rounds;
+    }
+
+    function startPraying() {
+      if (selectedRounds === 0) {
+        alert('กรุณาเลือกจำนวนรอบก่อนเริ่มสวด');
+        return;
+      }
+
+      localStorage.setItem('selectedRounds', selectedRounds);
+      window.location.href = 'step4.html';
+    }
+  </script>
+
 </body>
 </html>
+
