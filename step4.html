@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f3f4f6;
+      background-color: #121212;
       margin: 0;
       padding: 0;
       display: flex;
@@ -16,43 +16,45 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      color: #FFD700;
     }
 
     .container {
-      background: white;
+      background-color: #1e1e1e;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(255, 215, 0, 0.1);
       max-width: 500px;
       width: 90%;
     }
 
     h1 {
       font-size: 26px;
-      color: #007BFF;
+      color: #FFD700;
       margin-bottom: 20px;
     }
 
     p {
       font-size: 18px;
-      color: #333;
+      color: #FFDD99;
       margin: 8px 0;
     }
 
     #progressContainer {
       width: 100%;
       height: 20px;
-      background-color: #e6e6e6;
+      background-color: #333;
       border-radius: 10px;
       overflow: hidden;
       margin: 20px 0;
       position: relative;
+      box-shadow: inset 0 1px 3px rgba(255, 215, 0, 0.3);
     }
 
     #progressBar {
       height: 100%;
       width: 0%;
-      background-color: #007BFF;
+      background: linear-gradient(to right, #FFD700, #FFB700);
       transition: width 0.3s;
     }
 
@@ -62,7 +64,7 @@
       text-align: center;
       top: 0;
       font-size: 14px;
-      color: #fff;
+      color: #000;
       line-height: 20px;
     }
 
@@ -70,8 +72,8 @@
       margin-top: 20px;
       padding: 12px 20px;
       font-size: 16px;
-      color: white;
-      background-color: #28a745;
+      color: #121212;
+      background-color: #FFD700;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -80,7 +82,7 @@
     }
 
     #backButton:hover, #startButton:hover {
-      background-color: #218838;
+      background-color: #FFC700;
       transform: scale(1.05);
     }
   </style>
@@ -104,7 +106,6 @@
     const topic = localStorage.getItem('upluckTopic');
     const rounds = parseInt(localStorage.getItem('selectedRounds'));
 
-    // ถ้าไม่มีข้อมูลให้กลับไปหน้าแรก
     if (!topic || !rounds || isNaN(rounds)) {
       alert("กรุณาเลือกหัวข้อและจำนวนรอบก่อน");
       window.location.href = "index.html";
@@ -125,7 +126,7 @@
       success: "ความสำเร็จ",
       health: "สุขภาพ",
       luck: "โชคลาภ",
-      longlife: "อายุยืน"
+      longlife: "ได้รับชัยชนะ"
     };
 
     const chantFile = chantFiles[topic] || chantFiles["love"];
@@ -168,19 +169,16 @@
       window.location.href = "index.html";
     }
 
-    // ตรวจว่ามือถือหรือไม่
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
     if (isMobile) {
-      // มือถือต้องกดปุ่ม
       document.getElementById('startButton').style.display = 'block';
     } else {
-      // Desktop auto-play ได้
       playChant();
     }
   </script>
 </body>
 </html>
+
 
 
 
