@@ -68,7 +68,7 @@
       line-height: 20px;
     }
 
-    #backButton, #startButton {
+    #startButton {
       margin-top: 20px;
       padding: 12px 20px;
       font-size: 16px;
@@ -81,7 +81,7 @@
       width: 100%;
     }
 
-    #backButton:hover, #startButton:hover {
+    #startButton:hover {
       background-color: #FFC700;
       transform: scale(1.05);
     }
@@ -99,7 +99,6 @@
     </div>
 
     <button id="startButton" style="display: none;">เริ่มสวด</button>
-    <button id="backButton" onclick="goToHome()">กลับไปหน้าแรก</button>
   </div>
 
   <script>
@@ -165,10 +164,6 @@
       playChant();
     });
 
-    function goToHome() {
-      window.location.href = "index.html";
-    }
-
     const isMobile = /Mobi|Android/i.test(navigator.userAgent);
     if (isMobile) {
       document.getElementById('startButton').style.display = 'block';
@@ -178,6 +173,7 @@
   </script>
 </body>
 </html>
+
 
 
 
