@@ -116,7 +116,6 @@
 
     <script>
         function selectOption(option) {
-            // Map หัวข้อภาษาไทยไปยังคีย์ภาษาอังกฤษ
             const topicMap = {
                 "ความรัก": "love",
                 "การเงิน": "money",
@@ -125,14 +124,12 @@
                 "โชคดี": "luck",
                 "ชีวิตยืนยาว": "longlife"
             };
-
-            // แปลงหัวข้อภาษาไทยเป็นคีย์ภาษาอังกฤษ
+    
             const topicKey = topicMap[option];
-
-            // ตรวจสอบว่าหัวข้อที่เลือกมีอยู่ใน topicMap หรือไม่
+    
             if (topicKey) {
-                localStorage.setItem('upluckTopic', topicKey); // บันทึกค่าใน localStorage
-                window.location.href = 'step2.html'; // ย้ายไปยัง step2
+                localStorage.setItem('upluckTopic', topicKey); // ถ้ายังอยากใช้ค่าในหน้าใหม่
+                window.location.href = topicKey + ".html"; // ไปหน้าเฉพาะ เช่น love.html
             } else {
                 alert('หัวข้อที่เลือกไม่ถูกต้อง');
             }
@@ -140,3 +137,4 @@
     </script>
 </body>
 </html>
+
