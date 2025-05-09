@@ -100,8 +100,14 @@
   </div>
 
   <script>
-    const topic = localStorage.getItem('upluckTopic') || "love";
-    const rounds = parseInt(localStorage.getItem('selectedRounds')) || 1;
+    const topic = localStorage.getItem('upluckTopic');
+    const rounds = parseInt(localStorage.getItem('selectedRounds'));
+
+    if (!topic || !rounds || isNaN(rounds)) {
+    alert("กรุณาเลือกหัวข้อและจำนวนรอบก่อน");
+    window.location.href = "index.html"; // หรือ redirect ไปหน้าเริ่มต้นของคุณ
+}
+
 
     const chantFiles = {
       love: 'resource/love.mp3',
